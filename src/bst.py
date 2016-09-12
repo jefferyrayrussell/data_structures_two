@@ -16,20 +16,20 @@ class BinarySearchTree(object):
     """Impliment Binary Search Tree class object."""
 
     def __init__(self):
-        """Initialize Binary Search Tree."""
+        """Initialize binary search tree."""
         self.root = None
-        self._lst = []
+        self._len = 0
 
     def size(self):
-        """Return size of Binary Search Tree."""
-        return len(self._lst)
+        """Return size of binary search tree."""
+        return self._len
 
     def insert(self, data):
         """Insert node into binary search tree."""
         new_node = Node(data)
         if self.root is None:
             self.root = new_node
-            self._lst.append(new_node.data)
+            self._len += 1
         else:
             current_node = self.root
             check = True
@@ -40,7 +40,7 @@ class BinarySearchTree(object):
                     else:
                         current_node.lchild = new_node
                         new_node.parent = current_node
-                        self._lst.append(new_node.data)
+                        self._len += 1
                         check = False
                 elif new_node.data > current_node.data:
                     if current_node.rchild:
@@ -48,5 +48,5 @@ class BinarySearchTree(object):
                     else:
                         current_node.rchild = new_node
                         new_node.parent = current_node
-                        self._lst.append(new_node.data)
+                        self._len += 1
                         check = False
