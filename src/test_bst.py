@@ -238,3 +238,46 @@ def test_depth_of_lefts_and_rights(bst_three):
     bst_three.insert(5)
     bst_three.insert(1)
     assert bst_three.depth() == 4
+
+
+def test_balance_on_empty():
+    """Test balance is 0 on empty."""
+    from bst import BinarySearchTree as BsT
+    test_bst = BsT()
+    assert test_bst.balance() == 0
+
+
+def test_balance_on_one(bst_one):
+    """Test balance is 1 on empty."""
+    assert bst_one.balance() == 0
+
+
+def test_balance_on_three(bst_three):
+    """Test balance with three nodes."""
+    assert bst_three.balance() == 0
+
+
+def test_balance_on_four_right(bst_three):
+    """Test balance with four nodes heavy right."""
+    bst_three.insert(20)
+    assert bst_three.balance() == -1
+
+
+def test_balance_on_five_right(bst_three):
+    """Test balance with five nodes heavy right."""
+    bst_three.insert(20)
+    bst_three.insert(18)
+    assert bst_three.balance() == -2
+
+
+def test_balance_on_four_left(bst_three):
+    """Test balance with four nodes heavy left."""
+    bst_three.insert(5)
+    assert bst_three.balance() == 1
+
+
+def test_balance_on_five_left(bst_three):
+    """Test balance with five nodes heavy left."""
+    bst_three.insert(5)
+    bst_three.insert(1)
+    assert bst_three.balance() == 2

@@ -12,6 +12,9 @@ class Node(object):
         self.rchild = None
         self._depth = 0
 
+    def determine_individual_node_depth(self):
+        """Determine depth of any individual node."""
+
 
 class BinarySearchTree(object):
     """Impliment Binary Search Tree class object."""
@@ -20,45 +23,49 @@ class BinarySearchTree(object):
         """Initialize binary search tree."""
         self.root = None
         self._len = 0
+        self.ldepth = 0
+        self.rdepth = 0
 
     def size(self):
         """Return size of binary search tree."""
         return self._len
 
     def insert(self, data):
-        """Insert node into binary search tree."""
+        """Insert node into binary search tree and track depth."""
         new_node = Node(data)
+        counter = 1
         if self.root is None:
             self.root = new_node
             self._len += 1
-            self.root._depth = 1
+            self.ldepth += 1
+            self.rdepth += 1
         else:
             current_node = self.root
             check = True
-            counter = 1
             while check is True:
+                counter += 1
                 if new_node.data < current_node.data:
                     if current_node.lchild:
                         current_node = current_node.lchild
-                        counter += 1
                     else:
                         current_node.lchild = new_node
                         new_node.parent = current_node
                         self._len += 1
-                        if current_node.rchild is None:
-                            self.root._depth += 1
                         check = False
                 elif new_node.data > current_node.data:
                     if current_node.rchild:
                         current_node = current_node.rchild
-                        counter += 1
                     else:
                         current_node.rchild = new_node
                         new_node.parent = current_node
                         self._len += 1
-                        if current_node.lchild is None:
-                            self.root._depth += 1
                         check = False
+        if new_node.data < self.root.data:
+            if counter > self.ldepth:
+                self.ldepth = counter
+        else:
+            if counter > self.rdepth:
+                self.rdepth = counter
 
     def contains(self, data):
         """Check if data is present in bst."""
@@ -81,7 +88,22 @@ class BinarySearchTree(object):
 
     def depth(self):
         """Return depth of bst."""
-        try:
-            return self.root._depth
-        except AttributeError:
-            return 0
+        return max(self.ldepth, self.rdepth)
+
+    def balance(self):
+        """Return balance of bst."""
+        return self.ldepth - self.rdepth
+
+if __name__ == '__main__':
+    u_lst = range(15)
+    u_bst = BinarySearchTree()
+    for i in u_lst:
+        u_bst.insert(i)
+    print(u_bst)
+        
+    b_lst = 
+    b_bst = BinarySearchTree()
+    Print b_bst.insert
+
+        # def bst_balanced(b_lst):
+        #     """Create balanced binary search tree."""
