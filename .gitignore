@@ -1,3 +1,9 @@
+bin/
+pip-selfcheck.json
+pyvenv.cfg
+share/
+lib64
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
