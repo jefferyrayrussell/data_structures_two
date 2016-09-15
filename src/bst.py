@@ -1,8 +1,8 @@
-"""Implimentation of Binary Search Tree Class and Methods."""
+"""Implementation of Binary Search Tree Class and Methods."""
 
 
 class Node(object):
-    """Impliment Node class object."""
+    """Implement Node class object."""
 
     def __init__(self, data):
         """Initialize node."""
@@ -10,14 +10,10 @@ class Node(object):
         self.parent = None
         self.lchild = None
         self.rchild = None
-        self._depth = 0
-
-    def determine_individual_node_depth(self):
-        """Determine depth of any individual node."""
 
 
 class BinarySearchTree(object):
-    """Impliment Binary Search Tree class object."""
+    """Implement Binary Search Tree class object."""
 
     def __init__(self):
         """Initialize binary search tree."""
@@ -95,15 +91,4 @@ class BinarySearchTree(object):
         return self.ldepth - self.rdepth
 
 if __name__ == '__main__':
-    u_lst = range(15)
-    u_bst = BinarySearchTree()
-    for i in u_lst:
-        u_bst.insert(i)
-    print(u_bst)
-        
-    b_lst = 
-    b_bst = BinarySearchTree()
-    Print b_bst.insert
-
-        # def bst_balanced(b_lst):
-        #     """Create balanced binary search tree."""
+    """Demonstrate performance of best and worst case search scenarios."""
