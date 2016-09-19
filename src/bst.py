@@ -1,5 +1,5 @@
 """Implimentation of Binary Search Tree Class and Methods."""
-
+from collections import deque
 
 class Node(object):
     """Impliment Node class object."""
@@ -85,3 +85,15 @@ class BinarySearchTree(object):
             return self.root._depth
         except AttributeError:
             return 0
+
+    def breadth_first(self):
+        """Breadth first traversl using generators."""
+        to_visit = deque()
+        to_visit.append(self.root)
+        while len(to_visit):
+            current = to_visit.popleft()
+            yield current.data
+            if current.lchild:
+                to_visit.append(current.lchild)
+            if current.rchild:
+                to_visit.append(current.rchild)

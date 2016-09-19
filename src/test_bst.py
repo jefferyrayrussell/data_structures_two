@@ -238,3 +238,9 @@ def test_depth_of_lefts_and_rights(bst_three):
     bst_three.insert(5)
     bst_three.insert(1)
     assert bst_three.depth() == 4
+
+def test_breadth_first(bst_three):
+    """Test beardth first traversal."""
+    bft = bst_three.breadth_first()
+    gen_list = (item for item in bft)
+    assert list(gen_list) == [10, 7, 15]
